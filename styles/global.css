@@ -1,29 +1,29 @@
 * {
-    margin: 0;
-    padding:0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding:0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-*, 
-*::before, 
+*,
+*::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    font-size: 1.6rem;
-    background-color: var(--mainBg);
+  font-size: 1.6rem;
+  background-color: var(--mainBg);
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 body, input, textarea, button {
-    font-family: Helvetica, sans-serif
+  font-family: Helvetica, sans-serif
 }
