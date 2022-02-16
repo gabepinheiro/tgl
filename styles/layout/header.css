@@ -1,0 +1,87 @@
+.main-header {
+  height: 8.0rem;
+  border-bottom: 2px solid var(--gray-light-300);
+  display: flex;
+  align-items: center;
+}
+
+.main-header > .container {
+  width: var(--container);
+  padding: 0 2rem;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+}
+
+.logo-box {
+  height: 8.0rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-right: 7.5rem;
+}
+
+.logo-box::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0.7rem;
+  background-color: #B5C401;
+  border-radius: 6px;
+  position: absolute;
+  bottom: -0.3rem;
+  left:0
+}
+
+.main-header__logo {
+  color: var(--text-title);
+  font-style: italic;
+  font-size: 4.4rem;
+  padding: 0 1rem;
+}
+
+.main-header__nav-link {
+  text-decoration: none;
+  color: var(--text-title);
+  font-size: 2.0rem;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.main-header__actions {
+  margin-left: auto;
+  display: flex;
+  gap: 4.0rem;
+}
+
+.actions__account {
+  text-decoration: none;
+}
+
+.actions__log-out {
+  border: 0;
+  background-color: transparent;
+
+}
+
+.actions__account,
+.actions__log-out {
+  color: var(--text-title);
+  font-size: 2.0rem;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.main-header__nav-link,
+.actions__account,
+.actions__log-out {
+  transition: all 0.2s ease-in-out;
+}
+
+.main-header__nav-link:hover,
+.actions__account:hover,
+.actions__log-out:hover {
+  color:#B5C401;
+}
+
