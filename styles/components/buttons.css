@@ -1,0 +1,23 @@
+.btn {
+  height: 5.2rem;
+  padding: 1.7rem 2.5rem;
+  border-radius: 1.0rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.3rem;
+  border:0;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.btn__primary {
+  background-color: var(--green-light);
+  color:  var(--white);
+}
+
+.btn__primary--outline {
+  color: var(--green-light);
+  border: 1px solid var(--green-light);
+  background-color: var(--white);
+}
