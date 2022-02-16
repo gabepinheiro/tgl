@@ -62,7 +62,9 @@
 .actions__log-out {
   border: 0;
   background-color: transparent;
-
+  display: flex;
+  align-items: center;
+  gap: 1.0rem;
 }
 
 .actions__account,
@@ -85,3 +87,11 @@
   color:#B5C401;
 }
 
+.actions__log-out-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  -webkit-mask: url('../../assets/arrow-right.svg') no-repeat center;
+  mask: url('../../assets/arrow-right.svg') no-repeat center;
+  background-color: currentColor;
+}
