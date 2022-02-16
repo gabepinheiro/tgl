@@ -1,0 +1,19 @@
+:root {
+    --container: 130rem;
+
+    /*colors*/
+    --mainBg: #f7f7f7;
+    --white: #fff;
+    --green: #01AC66;
+    --green-light: #27C383;
+    --orange: #F79C31;
+    --purple: #7F3992;
+    --cyan: #ADC0C4;
+    --text-title: #707070;
+    --text: #868686;
+
+    --gray-light-100: #F7F7F7;
+    --gray-light-200: #F4F4F4;
+    --gray-light-300: #EBEBEB;
+    --gray-light-400: #E2E2E2;
+}
