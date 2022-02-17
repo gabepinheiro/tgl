@@ -1,0 +1,10 @@
+.number-button {
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 50%;
+  border:0;
+  background-color: var(--cyan);
+  color: var(--white);
+  font-size: 2.0rem;
+  font-weight: bold;
+}
