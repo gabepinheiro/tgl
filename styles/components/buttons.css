@@ -32,3 +32,14 @@
   border: 1px solid var(--purple);
   background-color: var(--white);
 }
+
+.btn__orange {
+  background-color: var(--orange);
+  color:  var(--white);
+}
+
+.btn__orange--outline {
+  color: var(--orange);
+  border: 1px solid var(--orange);
+  background-color: var(--white);
+}
