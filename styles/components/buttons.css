@@ -22,3 +22,13 @@
   background-color: var(--white);
 }
 
+.btn__purple {
+  background-color: var(--purple);
+  color:  var(--white);
+}
+
+.btn__purple--outline {
+  color: var(--purple);
+  border: 1px solid var(--purple);
+  background-color: var(--white);
+}
