@@ -1,0 +1,130 @@
+.cart {
+  background-color: var(--gray-light-200);
+  border: 1px solid var(--gray-light-400);
+  border-radius: 1.0rem;
+  overflow-wrap: break-word;
+}
+
+.cart__content {
+  background-color: var(--white);
+  padding: 3.2rem 2.0rem;
+}
+
+.cart__heading {
+  color: var(--text-title);
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom: 3.5rem;
+}
+
+.cart__items {
+  list-style: none;
+}
+
+.cart__item {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}
+
+.cart__item:not(:last-child) {
+  margin-bottom: 3.2rem;
+}
+
+.cart__item-game-info {
+  border-left: 4px solid currentColor;
+  border-radius: 4px 0 0 4px;
+  padding: 1rem 1.2rem;
+}
+
+.cart__item-game-numbers,
+.cart__item-game-name {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.cart__item-game-numbers {
+  color: var(--text);
+  margin-bottom: 0.6rem;
+}
+
+.cart__item-game-name--purple {
+  color: var(--purple);
+}
+
+.cart__item-game-name--green {
+  color: var(--green);
+}
+
+.cart__item-game-name--orange {
+  color: var(--orange);
+}
+
+.cart__item-game-value {
+  color: var(--text);
+  font-size: 1.6rem;
+}
+
+
+.cart__item-action-delete {
+  border:0;
+  color: #888888;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+.cart__item-action-delete-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  -webkit-mask: url('../../assets/trash.svg') no-repeat center;
+  mask: url('../../assets/arrow-right.svg') no-repeat center;
+  background-color: currentColor;
+}
+
+.cart__item-action-delete:hover {
+  color:#fa6767;
+}
+
+.cart__total-value {
+  font-size: 2.4rem;
+  margin-top: 4rem;
+  text-transform: uppercase;
+  color: var(--text-title);
+  font-weight: 300;
+}
+
+.cart__total-value span {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.cart__action-save {
+  color: var(--green-light);
+  display: block;
+  margin: 2.7rem auto;
+  font-weight: bold;
+  font-size: 3.5rem;
+  border: 0;
+  background-color: transparent;
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+  font-style: italic;
+  transition: all 0.2s ease-in-out;
+}
+
+.cart__action-save-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  -webkit-mask: url('../../assets/arrow-right.svg') no-repeat center;
+  mask: url('../../assets/arrow-right.svg') no-repeat center;
+  background-color: currentColor;
+}
+
+.cart__action-save:hover {
+  color: var(--green);
+}
