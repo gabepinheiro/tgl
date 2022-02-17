@@ -2,8 +2,4 @@
 @import url(./global.css);
 @import url(./layout/index.css);
 @import url(./components/index.css);
-
-/*somente para testes*/
-.main-content {
-  margin: 2rem;
-}
+@import url(./pages/index.css);

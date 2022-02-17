@@ -3,18 +3,22 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: 2.3rem;
+  gap: 3.0rem;
   border:0;
   font-weight: bold;
   font-size: 1.6rem;
+  height: 5.2rem;
+  padding: 1.7rem 2.5rem;
 }
 
 .btn--sm {
   padding: 0.9rem 2.2rem;
+  height: 3.6rem;
 }
 
 .btn--md {
   padding: 1.7rem 2.5rem;
+  height: 5.2rem;
 }
 
 .btn--rounded {
