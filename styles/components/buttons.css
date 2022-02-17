@@ -21,6 +21,15 @@
   border-radius: 100px;
 }
 
+.btn--border-sm {
+  border: 1px solid currentColor;
+}
+
+.btn--border-md {
+  border: 2px solid currentColor;
+}
+
+
 .btn__green {
   background-color: var(--green-light);
   color:  var(--white);
@@ -28,7 +37,6 @@
 
 .btn__green--outline {
   color: var(--green-light);
-  border: 1px solid var(--green-light);
   background-color: var(--white);
 }
 
@@ -39,7 +47,6 @@
 
 .btn__purple--outline {
   color: var(--purple);
-  border: 1px solid var(--purple);
   background-color: var(--white);
 }
 
@@ -50,6 +57,5 @@
 
 .btn__orange--outline {
   color: var(--orange);
-  border: 1px solid var(--orange);
   background-color: var(--white);
 }
