@@ -11,13 +11,14 @@
   font-size: 1.6rem;
 }
 
-.btn__primary {
+.btn__green {
   background-color: var(--green-light);
   color:  var(--white);
 }
 
-.btn__primary--outline {
+.btn__green--outline {
   color: var(--green-light);
   border: 1px solid var(--green-light);
   background-color: var(--white);
 }
+
