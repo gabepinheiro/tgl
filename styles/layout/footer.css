@@ -1,0 +1,12 @@
+.main-footer {
+  height: 8.0rem;
+  border-top: 2px solid var(--gray-light-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16rem;
+}
+
+.main-footer p {
+  color: var(--text-title);
+}
