@@ -17,6 +17,9 @@
   padding: 1.7rem 2.5rem;
 }
 
+.btn--rounded {
+  border-radius: 100px;
+}
 
 .btn__green {
   background-color: var(--green-light);
