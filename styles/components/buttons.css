@@ -1,6 +1,4 @@
 .btn {
-  height: 5.2rem;
-  padding: 1.7rem 2.5rem;
   border-radius: 1.0rem;
   display: inline-flex;
   justify-content: center;
@@ -10,6 +8,15 @@
   font-weight: bold;
   font-size: 1.6rem;
 }
+
+.btn--sm {
+  padding: 0.9rem 2.2rem;
+}
+
+.btn--md {
+  padding: 1.7rem 2.5rem;
+}
+
 
 .btn__green {
   background-color: var(--green-light);
