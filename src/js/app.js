@@ -52,6 +52,7 @@ export function app () {
     [...new Array(range)].map((_, index) => index + 1)
       .forEach((number) => {
         const $numberButton = createNumberButton(number)
+        $numberButton.addEventListener('click', handleSelectNumber(number))
         $fragment.appendChild($numberButton)
       })
 
@@ -85,6 +86,13 @@ export function app () {
       setBetTypeDescription(selectedGame.description)
       gameTypeButtonsRender(games.types)
       rangeNumbersRender(selectedGame.range)
+    }
+  }
+
+  function handleSelectNumber(number) {
+    return (e) => {
+      e.target.style.background = selectedGame.color
+      console.log(number)
     }
   }
 
