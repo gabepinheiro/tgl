@@ -2,7 +2,8 @@ import { get } from './http.js'
 import { $, Fragment, Element } from './utils/index.js'
 import {
   createNumberButton,
-  createGameTypeButton
+  createGameTypeButton,
+  createCartItem
 } from './components/index.js'
 
 let games = {}
@@ -62,6 +63,9 @@ export function app () {
       gameTypeButtonsRender(games.types)
       rangeNumbersRender(range)
 
+      $cartItemsContainer.appendChild(cartItemsRender(cart.items))
+      console.log(cart.items)
+
       const amount = calculateTotalAmount(cart.items)
       setValueAmountDisplay(amount)
       console.log('Cart: ', cart)
@@ -81,6 +85,22 @@ export function app () {
 
   function setBetTypeDescription (description) {
     $betTypeDescription.textContent = description
+  }
+
+  function cartItemsRender (items) {
+    if(!items) {
+      return document.createElement('p')
+        .appendChild(
+          document.createTextNode('Nenhuma aposta adicionada.')
+        )
+    }
+
+    const $fragment = Fragment()
+    items.forEach(item => {
+      $fragment.appendChild(createCartItem(item))
+    })
+
+    return $fragment
   }
 
   function rangeNumbersRender (range) {
