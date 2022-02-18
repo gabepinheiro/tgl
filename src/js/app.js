@@ -242,6 +242,8 @@ export function app () {
     setValueAmountDisplay(total)
     $cartItemsContainer.appendChild(createCartItem(bet, handleDeleteBetOnCart))
 
+    handleClearGame()
+
     console.log('Cart: ', cart)
   }
 
