@@ -1,5 +1,5 @@
 import { get } from './http.js'
-import { $, Fragment, Element } from './utils/index.js'
+import { $, Fragment, Element, getCurrencyFormatted } from './utils/index.js'
 import {
   createNumberButton,
   createGameTypeButton,
@@ -42,7 +42,7 @@ function calculateTotalAmount (items) {
 }
 
 function setValueAmountDisplay (amount) {
-  $cartTotalAmount.textContent = amount
+  $cartTotalAmount.textContent = getCurrencyFormatted(amount)
 }
 
 export function app () {

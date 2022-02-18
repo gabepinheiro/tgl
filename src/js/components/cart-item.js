@@ -1,4 +1,4 @@
-import { Element, Text } from "../utils/index.js"
+import { Element, Text, getCurrencyFormatted } from "../utils/index.js"
 
 const modifiers = {
   'Mega-Sena': 'cart__item-game-name--green',
@@ -28,7 +28,7 @@ function createCartItem (item, handleDeleteBetOnCart) {
   $pElTypeNameAndPrice.appendChild($typeName)
   const $price = Element('span')
   $price.classList.add('cart__item-game-value')
-  const textNodePrice = Text(item.price)
+  const textNodePrice = Text(getCurrencyFormatted(item.price))
   $price.appendChild(textNodePrice)
   $pElTypeNameAndPrice.appendChild($price)
 
