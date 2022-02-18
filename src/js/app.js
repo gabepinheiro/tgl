@@ -104,6 +104,9 @@ export function app () {
       $fragment.appendChild(createCartItem(item, handleDeleteBetOnCart))
     })
 
+    const amount = calculateTotalAmount(cart.items)
+    setValueAmountDisplay(amount)
+
     return $fragment
   }
 
