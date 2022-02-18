@@ -7,6 +7,9 @@ import {
 
 let games = {}
 let selectedGame = {}
+let currentBet = {
+  numbers: []
+}
 
 const $betTypeName = $('[data-js=bet-type-name]')
 const $betTypeDescription = $('[data-js=bet-type-desc]')
@@ -91,8 +94,9 @@ export function app () {
 
   function handleSelectNumber(number) {
     return (e) => {
+      currentBet.numbers.push(number)
       e.target.style.background = selectedGame.color
-      console.log(number)
+      console.log(currentBet)
     }
   }
 
