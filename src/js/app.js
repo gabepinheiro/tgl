@@ -94,6 +94,9 @@ export function app () {
 
   function handleSelectNumber(number) {
     return (e) => {
+      if(currentBet.numbers.length === selectedGame['max-number']) {
+        return;
+      }
       currentBet.numbers.push(number)
       e.target.style.background = selectedGame.color
       console.log(currentBet)
