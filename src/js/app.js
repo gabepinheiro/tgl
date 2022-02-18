@@ -239,7 +239,8 @@ export function app () {
       price,
       type
     }
-    if(!cart.items) $cartItemsContainer.innerHTML = ''
+
+    if(!cart.items || cart.items.length === 0) $cartItemsContainer.innerHTML = ''
 
     cart.items = cart.items ? [...cart.items, bet] : [bet]
     const total = calculateTotalAmount(cart.items)
