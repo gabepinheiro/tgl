@@ -76,6 +76,10 @@ export function app () {
     $gameTypeButtonContainer.appendChild($fragment)
   }
 
+  function clearNumbersCurrentBet () {
+    currentBet.numbers = []
+  }
+
   function handleSelectGameType (type) {
     return (e) => {
       e.preventDefault()
@@ -85,6 +89,7 @@ export function app () {
       }))
       selectedGame = games.types.find(game => game.type === type)
 
+      clearNumbersCurrentBet()
       setBetTypeName(type)
       setBetTypeDescription(selectedGame.description)
       gameTypeButtonsRender(games.types)
