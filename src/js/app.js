@@ -3,6 +3,9 @@ import { get } from './http.js'
 let games = {}
 let selectedGame = {}
 
+const $betTypeName = document.querySelector('[data-js=bet-type-name]')
+const $betTypeDescription = document.querySelector('[data-js=bet-type-desc]')
+
 export function app () {
   function init() {
     requestGames(response => {
@@ -15,7 +18,19 @@ export function app () {
 
       console.log('Games: ', games)
       console.log('selectedGame: ', selectedGame)
+
+      const { type, description } = selectedGame
+      setBetTypeName(type)
+      setBetTypeDescription(description)
     })
+  }
+
+  function setBetTypeName (typeName) {
+    $betTypeName.textContent = typeName
+  }
+
+  function setBetTypeDescription (description) {
+    $betTypeDescription.textContent = description
   }
 
   function requestGames (callback) {
