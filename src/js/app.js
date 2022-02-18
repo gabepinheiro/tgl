@@ -217,6 +217,7 @@ export function app () {
     const { numbers } = currentBet
     const { price, type } = selectedGame
     const bet = {
+      id: crypto.randomUUID(),
       numbers,
       price,
       type
@@ -227,6 +228,8 @@ export function app () {
     const total = calculateTotalAmount(cart.items)
     setValueAmountDisplay(total)
     $cartItemsContainer.appendChild(createCartItem(bet))
+
+    console.log('Cart: ', cart)
   }
 
   function fillGame (numbers) {
