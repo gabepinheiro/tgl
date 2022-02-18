@@ -227,6 +227,10 @@ export function app () {
   }
 
   function handleAddBetOnCart () {
+    if(currentBet.numbers.length < selectedGame['max-number']) {
+      return alert('Preecha todos os números do jogo!')
+    }
+
     const { numbers } = currentBet
     const { price, type } = selectedGame
     const bet = {
