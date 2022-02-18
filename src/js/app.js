@@ -15,6 +15,7 @@ const $betTypeName = $('[data-js=bet-type-name]')
 const $betTypeDescription = $('[data-js=bet-type-desc]')
 const $numbersRangeContainer = $('[data-js=numbers-range-container]')
 const $gameTypeButtonContainer = $('[data-js=game-type-button-container]')
+const $btnCompleteGame = $('[data-js=btn-complete-game]')
 
 function requestGames (callback) {
   get('src/js/games.json', callback)
@@ -39,6 +40,12 @@ export function app () {
       gameTypeButtonsRender(games.types)
       rangeNumbersRender(range)
     })
+
+    initEvents()
+  }
+
+  function initEvents () {
+    $btnCompleteGame.addEventListener('click', handleCompleteGame)
   }
 
   function setBetTypeName (typeName) {
@@ -114,6 +121,54 @@ export function app () {
       e.target.style.background = selectedGame.color
       console.log(currentBet)
     }
+  }
+
+  function getRandomNumber (range) {
+    return Math.ceil(Math.random() * +range)
+  }
+
+  function getRandomNumbersBet (range, max_number) {
+    let randomNumbers = []
+    while(randomNumbers.length < max_number) {
+      const random = getRandomNumber(range)
+      const index = randomNumbers.indexOf(random)
+
+      if(index === -1) {
+        randomNumbers.push(!!random ? random : getRandomNumber(range))
+      } else {
+        randomNumbers = randomNumbers.filter(item => item !== index)
+      }
+    }
+
+    return randomNumbers
+  }
+
+  function handleCompleteGame () {
+    const { range } = selectedGame
+    const max_number = selectedGame['max-number']
+
+
+    if(currentBet.numbers.length){
+      clearNumbersButton()
+      currentBet.numbers = getRandomNumbersBet(range, max_number)
+      fillGame(currentBet.numbers)
+      return;
+    }
+
+    currentBet.numbers = getRandomNumbersBet(range, max_number)
+    fillGame(currentBet.numbers)
+  }
+
+  function fillGame (numbers) {
+    numbers.forEach(number => {
+      const $numberButton = $(`[data-number=${number < 10 ? `"0${number}"` : `"${number}"`}]`)
+      $numberButton.style.background = selectedGame.color
+    })
+  }
+
+  function clearNumbersButton () {
+    const $buttons = $numbersRangeContainer.querySelectorAll('button')
+    $buttons.forEach(button => button.style.background = '#adc0c4')
   }
 
   return init
