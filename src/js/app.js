@@ -99,6 +99,14 @@ export function app () {
 
   function handleSelectNumber(number) {
     return (e) => {
+      const hasNumber = currentBet.numbers.find(item => item === number)
+      if(hasNumber) {
+        currentBet.numbers = currentBet.numbers.filter(item => item !== hasNumber)
+        e.target.style.background = '#adc0c4'
+        console.log(currentBet)
+        return;
+      }
+
       if(currentBet.numbers.length === selectedGame['max-number']) {
         return;
       }
