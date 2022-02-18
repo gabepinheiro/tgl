@@ -3,11 +3,10 @@ import { Element, Text } from "../utils/index.js"
 const modifiers = {
   'Mega-Sena': 'cart__item-game-name--green',
   'Lotofácil': 'cart__item-game-name--purple',
-  'Quina': 'cart__item-game-name--orange'
-
+  'Quina': 'cart__item-game-name--orange',
 }
 
-function createCartItem (item) {
+function createCartItem (item, handleDeleteBetOnCart) {
   const $li = Element('li')
   $li.classList.add('cart__item')
   const $button = Element('button')
@@ -33,11 +32,12 @@ function createCartItem (item) {
   $price.appendChild(textNodePrice)
   $pElTypeNameAndPrice.appendChild($price)
 
-
   $gameInfoContainer.appendChild($pElNumbers)
   $gameInfoContainer.appendChild($pElTypeNameAndPrice)
   $li.appendChild($button)
   $li.appendChild($gameInfoContainer)
+
+  $button.addEventListener('click', handleDeleteBetOnCart(item.id))
 
   return $li
 }

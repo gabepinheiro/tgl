@@ -90,7 +90,9 @@ export function app () {
   }
 
   function cartItemsRender (items) {
-    if(!items) {
+    $cartItemsContainer.innerHTML = ''
+    if(!items || items?.length === 0) {
+      $cartItemsContainer.innerHTML = ''
       return document.createElement('p')
         .appendChild(
           document.createTextNode('Nenhuma aposta adicionada.')
@@ -99,7 +101,7 @@ export function app () {
 
     const $fragment = Fragment()
     items.forEach(item => {
-      $fragment.appendChild(createCartItem(item))
+      $fragment.appendChild(createCartItem(item, handleDeleteBetOnCart))
     })
 
     return $fragment
@@ -213,6 +215,14 @@ export function app () {
     fillGame(currentBet.numbers)
   }
 
+  function handleDeleteBetOnCart (id) {
+    return (e) => {
+      const filteredItems = cart.items.filter(item => item.id !== id)
+      cart.items = filteredItems
+      $cartItemsContainer.appendChild(cartItemsRender(filteredItems))
+    }
+  }
+
   function handleAddBetOnCart () {
     const { numbers } = currentBet
     const { price, type } = selectedGame
@@ -227,7 +237,7 @@ export function app () {
     cart.items = cart.items ? [...cart.items, bet] : [bet]
     const total = calculateTotalAmount(cart.items)
     setValueAmountDisplay(total)
-    $cartItemsContainer.appendChild(createCartItem(bet))
+    $cartItemsContainer.appendChild(createCartItem(bet, handleDeleteBetOnCart))
 
     console.log('Cart: ', cart)
   }
