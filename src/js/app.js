@@ -64,11 +64,28 @@ export function app () {
     games.forEach(game => {
       const $item = Element('li')
       const $button = createGameTypeButton(game)
+      $button.addEventListener('click', handleSelectGameType(game.type))
       $item.appendChild($button)
       $fragment.appendChild($item)
     })
 
     $gameTypeButtonContainer.appendChild($fragment)
+  }
+
+  function handleSelectGameType (type) {
+    return (e) => {
+      e.preventDefault()
+      games.types = games.types.map(game => ({
+        ...game,
+        selected: game.type === type
+      }))
+      selectedGame = games.types.find(game => game.type === type)
+
+      setBetTypeName(type)
+      setBetTypeDescription(selectedGame.description)
+      gameTypeButtonsRender(games.types)
+      rangeNumbersRender(selectedGame.range)
+    }
   }
 
   return init
