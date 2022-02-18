@@ -11,6 +11,11 @@ let currentBet = {
   numbers: []
 }
 
+const cart = {
+  items: null,
+  total: 0
+}
+
 const $betTypeName = $('[data-js=bet-type-name]')
 const $betTypeDescription = $('[data-js=bet-type-desc]')
 const $numbersRangeContainer = $('[data-js=numbers-range-container]')
@@ -18,8 +23,24 @@ const $gameTypeButtonContainer = $('[data-js=game-type-button-container]')
 const $btnCompleteGame = $('[data-js=btn-complete-game]')
 const $btnClearGame = $('[data-js=btn-clear-game]')
 
+const $cartItemsContainer = $('[data-js=cart-items-container]')
+const $cartTotalAmount = $('[data-js=cart-total-amount]')
+
 function requestGames (callback) {
   get('src/js/games.json', callback)
+}
+
+function calculateTotalAmount (items) {
+  const total =  !!items
+    ? items.reduce((acc, current) => acc + current.price, 0)
+    : 0
+  cart.total= total
+
+  return total
+}
+
+function setValueAmountDisplay (amount) {
+  $cartTotalAmount.textContent = amount
 }
 
 export function app () {
@@ -40,6 +61,10 @@ export function app () {
       setBetTypeDescription(description)
       gameTypeButtonsRender(games.types)
       rangeNumbersRender(range)
+
+      const amount = calculateTotalAmount(cart.items)
+      setValueAmountDisplay(amount)
+      console.log('Cart: ', cart)
     })
 
     initEvents()

@@ -71,8 +71,8 @@
     <section class="cart">
       <div class="cart__content">
       <h2 class="cart__heading">Cart</h2>
-      <ul class="cart__items">
-        <li class="cart__item">
+      <ul class="cart__items" data-js="cart-items-container">
+        <!-- <li class="cart__item">
           <button class="cart__item-action-delete">
             <i class="cart__item-action-delete-icon"></i>
           </button>
@@ -103,10 +103,10 @@
               <span class="cart__item-game-value">R$ 4,50</span>
             </p>
           </div>
-        </li>
+        </li> -->
       </ul>
       <p class="cart__total-value">
-        <span>Cart</span> total R$ 7,00
+        <span>Cart</span> total <span data-js="cart-total-amount"></span>
       </p>
     </div>
     <button class="cart__action-save">
