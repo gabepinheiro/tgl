@@ -1,12 +1,13 @@
 import { get } from './http.js'
+import { $, Fragment } from './utils/index.js'
 import { createNumberButton } from './components/index.js'
 
 let games = {}
 let selectedGame = {}
 
-const $betTypeName = document.querySelector('[data-js=bet-type-name]')
-const $betTypeDescription = document.querySelector('[data-js=bet-type-desc]')
-const $numbersRangeContainer = document.querySelector('[data-js=numbers-range-container]')
+const $betTypeName = $('[data-js=bet-type-name]')
+const $betTypeDescription = $('[data-js=bet-type-desc]')
+const $numbersRangeContainer = $('[data-js=numbers-range-container]')
 
 function requestGames (callback) {
   get('src/js/games.json', callback)
@@ -42,7 +43,7 @@ export function app () {
 
   function rangeNumbersRender (range) {
     $numbersRangeContainer.innerHTML = ''
-    const $fragment = document.createDocumentFragment();
+    const $fragment = Fragment();
     [...new Array(range)].map((_, index) => index + 1)
       .forEach((number) => {
         const $numberButton = createNumberButton(number)
