@@ -1,6 +1,9 @@
 import { get } from './http.js'
-import { $, Fragment } from './utils/index.js'
-import { createNumberButton } from './components/index.js'
+import { $, Fragment, Element } from './utils/index.js'
+import {
+  createNumberButton,
+  createGameTypeButton
+} from './components/index.js'
 
 let games = {}
 let selectedGame = {}
@@ -8,6 +11,7 @@ let selectedGame = {}
 const $betTypeName = $('[data-js=bet-type-name]')
 const $betTypeDescription = $('[data-js=bet-type-desc]')
 const $numbersRangeContainer = $('[data-js=numbers-range-container]')
+const $gameTypeButtonContainer = $('[data-js=game-type-button-container]')
 
 function requestGames (callback) {
   get('src/js/games.json', callback)
@@ -29,6 +33,7 @@ export function app () {
       const { type, description, range } = selectedGame
       setBetTypeName(type)
       setBetTypeDescription(description)
+      gameTypeButtonsRender(games.types)
       rangeNumbersRender(range)
     })
   }
@@ -51,6 +56,19 @@ export function app () {
       })
 
     $numbersRangeContainer.appendChild($fragment)
+  }
+
+  function gameTypeButtonsRender (games) {
+    $gameTypeButtonContainer.innerHTML = ''
+    const $fragment = Fragment()
+    games.forEach(game => {
+      const $item = Element('li')
+      const $button = createGameTypeButton(game)
+      $item.appendChild($button)
+      $fragment.appendChild($item)
+    })
+
+    $gameTypeButtonContainer.appendChild($fragment)
   }
 
   return init
