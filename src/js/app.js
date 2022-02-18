@@ -16,6 +16,7 @@ const $betTypeDescription = $('[data-js=bet-type-desc]')
 const $numbersRangeContainer = $('[data-js=numbers-range-container]')
 const $gameTypeButtonContainer = $('[data-js=game-type-button-container]')
 const $btnCompleteGame = $('[data-js=btn-complete-game]')
+const $btnClearGame = $('[data-js=btn-clear-game]')
 
 function requestGames (callback) {
   get('src/js/games.json', callback)
@@ -46,6 +47,7 @@ export function app () {
 
   function initEvents () {
     $btnCompleteGame.addEventListener('click', handleCompleteGame)
+    $btnClearGame.addEventListener('click', handleClearGame)
   }
 
   function setBetTypeName (typeName) {
@@ -141,6 +143,11 @@ export function app () {
     }
 
     return randomNumbers
+  }
+
+  function handleClearGame () {
+    clearNumbersButton()
+    clearNumbersCurrentBet()
   }
 
   function handleCompleteGame () {
