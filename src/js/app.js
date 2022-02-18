@@ -23,6 +23,7 @@ const $numbersRangeContainer = $('[data-js=numbers-range-container]')
 const $gameTypeButtonContainer = $('[data-js=game-type-button-container]')
 const $btnCompleteGame = $('[data-js=btn-complete-game]')
 const $btnClearGame = $('[data-js=btn-clear-game]')
+const $btnAddToCart = $('[data-js=btn-add-to-cart]')
 
 const $cartItemsContainer = $('[data-js=cart-items-container]')
 const $cartTotalAmount = $('[data-js=cart-total-amount]')
@@ -77,6 +78,7 @@ export function app () {
   function initEvents () {
     $btnCompleteGame.addEventListener('click', handleCompleteGame)
     $btnClearGame.addEventListener('click', handleClearGame)
+    $btnAddToCart.addEventListener('click', handleAddBetOnCart)
   }
 
   function setBetTypeName (typeName) {
@@ -209,6 +211,22 @@ export function app () {
 
     currentBet.numbers = getRandomNumbersBet(range, max_number)
     fillGame(currentBet.numbers)
+  }
+
+  function handleAddBetOnCart () {
+    const { numbers } = currentBet
+    const { price, type } = selectedGame
+    const bet = {
+      numbers,
+      price,
+      type
+    }
+    if(!cart.items) $cartItemsContainer.innerHTML = ''
+
+    cart.items = cart.items ? [...cart.items, bet] : [bet]
+    const total = calculateTotalAmount(cart.items)
+    setValueAmountDisplay(total)
+    $cartItemsContainer.appendChild(createCartItem(bet))
   }
 
   function fillGame (numbers) {
