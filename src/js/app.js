@@ -1,10 +1,16 @@
 import { get } from './http.js'
+import { createNumberButton } from './components/index.js'
 
 let games = {}
 let selectedGame = {}
 
 const $betTypeName = document.querySelector('[data-js=bet-type-name]')
 const $betTypeDescription = document.querySelector('[data-js=bet-type-desc]')
+const $numbersRangeContainer = document.querySelector('[data-js=numbers-range-container]')
+
+function requestGames (callback) {
+  get('src/js/games.json', callback)
+}
 
 export function app () {
   function init() {
@@ -19,9 +25,10 @@ export function app () {
       console.log('Games: ', games)
       console.log('selectedGame: ', selectedGame)
 
-      const { type, description } = selectedGame
+      const { type, description, range } = selectedGame
       setBetTypeName(type)
       setBetTypeDescription(description)
+      rangeNumbersRender(range)
     })
   }
 
@@ -33,8 +40,16 @@ export function app () {
     $betTypeDescription.textContent = description
   }
 
-  function requestGames (callback) {
-    get('src/js/games.json', callback)
+  function rangeNumbersRender (range) {
+    $numbersRangeContainer.innerHTML = ''
+    const $fragment = document.createDocumentFragment();
+    [...new Array(range)].map((_, index) => index + 1)
+      .forEach((number) => {
+        const $numberButton = createNumberButton(number)
+        $fragment.appendChild($numberButton)
+      })
+
+    $numbersRangeContainer.appendChild($fragment)
   }
 
   return init
