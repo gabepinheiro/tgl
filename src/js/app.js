@@ -233,9 +233,12 @@ export function app () {
 
     const { numbers } = currentBet
     const { price, type } = selectedGame
+
+    const numbersAscendingOrder = numbers.map(Number).sort((a, b) => a - b)
+
     const bet = {
       id: crypto.randomUUID(),
-      numbers,
+      numbers: numbersAscendingOrder,
       price,
       type
     }
