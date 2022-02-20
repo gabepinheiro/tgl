@@ -222,6 +222,7 @@ export function app () {
     return (e) => {
       const filteredItems = cart.items.filter(item => item.id !== id)
       cart.items = filteredItems
+      setValueAmountDisplay(calculateTotalAmount(filteredItems))
       $cartItemsContainer.appendChild(cartItemsRender(filteredItems))
     }
   }
