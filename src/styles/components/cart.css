@@ -3,9 +3,11 @@
   border: 1px solid var(--gray-light-400);
   border-radius: 1.0rem;
   overflow-wrap: break-word;
+  flex: 1;
 }
 
 .cart__content {
+  border-radius: 1.0rem 1.0rem 0 0;
   background-color: var(--white);
   padding: 3.2rem 2.0rem;
 }
@@ -96,7 +98,7 @@
   font-weight: 300;
 }
 
-.cart__total-value span {
+.cart__total-value span:first-child {
   font-weight: bold;
   font-style: italic;
 }
