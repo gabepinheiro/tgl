@@ -246,10 +246,10 @@ export function app () {
 
     if(!cart.items || cart.items.length === 0) $cartItemsContainer.innerHTML = ''
 
-    cart.items = cart.items ? [...cart.items, bet] : [bet]
+    cart.items = cart.items ? [bet, ...cart.items] : [bet]
     const total = calculateTotalAmount(cart.items)
     setValueAmountDisplay(total)
-    $cartItemsContainer.appendChild(createCartItem(bet, handleDeleteBetOnCart))
+    $cartItemsContainer.insertAdjacentElement('afterbegin', createCartItem(bet, handleDeleteBetOnCart))
 
     handleClearGame()
 
