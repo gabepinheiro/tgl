@@ -55,9 +55,6 @@ export function app () {
       }))
       selectedGame = games.types[0]
 
-      console.log('Games: ', games)
-      console.log('selectedGame: ', selectedGame)
-
       const { type, description, range } = selectedGame
       setBetTypeName(type)
       setBetTypeDescription(description)
@@ -65,11 +62,9 @@ export function app () {
       rangeNumbersRender(range)
 
       $cartItemsContainer.appendChild(cartItemsRender(cart.items))
-      console.log(cart.items)
 
       const amount = calculateTotalAmount(cart.items)
       setValueAmountDisplay(amount)
-      console.log('Cart: ', cart)
     })
 
     initEvents()
@@ -164,7 +159,6 @@ export function app () {
       if(hasNumber) {
         currentBet.numbers = currentBet.numbers.filter(item => item !== hasNumber)
         e.target.style.background = '#adc0c4'
-        console.log(currentBet)
         return;
       }
 
@@ -173,7 +167,6 @@ export function app () {
       }
       currentBet.numbers.push(number)
       e.target.style.background = selectedGame.color
-      console.log(currentBet)
     }
   }
 
@@ -252,8 +245,6 @@ export function app () {
     $cartItemsContainer.insertAdjacentElement('afterbegin', createCartItem(bet, handleDeleteBetOnCart))
 
     handleClearGame()
-
-    console.log('Cart: ', cart)
   }
 
   function fillGame (numbers) {
