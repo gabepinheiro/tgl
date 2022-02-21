@@ -23,6 +23,18 @@
 
 .cart__items {
   list-style: none;
+  max-height: 350px;
+  overflow-y: scroll;
+}
+
+.cart__items::-webkit-scrollbar {
+  width: 0.4rem;
+  overflow: hidden;
+}
+
+.cart__items::-webkit-scrollbar-thumb {
+  background: #ADC0C4;
+  border-radius: 0.4rem;
 }
 
 .cart__item {
