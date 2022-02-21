@@ -162,9 +162,12 @@ export function app () {
         return;
       }
 
-      if(currentBet.numbers.length === selectedGame['max-number']) {
-        return;
+      const maxNumber = selectedGame['max-number']
+      const amountNumbersSelected = currentBet.numbers.length
+      if(amountNumbersSelected === maxNumber) {
+        return alert(`Jogo completo!\nDesselecione um dos números selecionados para poder selecionar outro.`)
       }
+
       currentBet.numbers.push(number)
       e.target.style.background = selectedGame.color
     }
@@ -243,7 +246,7 @@ export function app () {
     const maxNumber = selectedGame['max-number']
     if(currentNumbers < maxNumber) {
       const remaining  = getRemainingNumbers(maxNumber, currentNumbers)
-      const msg = `Jogo incompleto!\nEscolha mais ${remaining === 1
+      const msg = `Jogo incompleto!\nSelecione mais ${remaining === 1
           ? `${remaining} número`
           : `${remaining} números`}` + ' para completar.'
       return alert(msg)
