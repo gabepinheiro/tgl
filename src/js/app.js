@@ -205,17 +205,17 @@ export function app () {
 
   function handleCompleteGame () {
     const { range } = selectedGame
-    const max_number = selectedGame['max-number']
+    const maxNumber = selectedGame['max-number']
     const amountNumbersSelected = currentBet.numbers.length
     const currentNumbers = [...currentBet.numbers]
 
-    if(amountNumbersSelected === max_number) {
-      return alert(`Todos os ${max_number} números do jogo foram selecionados!`)
+    if(amountNumbersSelected === maxNumber) {
+      return alert(`Todos os ${maxNumber} números do jogo já foram selecionados!`)
     }
 
-    if(amountNumbersSelected < max_number){
+    if(amountNumbersSelected < maxNumber){
       clearNumbersButton()
-      const remainingNumbers = getRemainingNumbers(max_number, amountNumbersSelected)
+      const remainingNumbers = getRemainingNumbers(maxNumber, amountNumbersSelected)
       const randomNumbers = getRandomNumbersBet(range, remainingNumbers)
       if(hasDuplicateNumberArrays(currentNumbers, randomNumbers)) {
         return handleCompleteGame()
@@ -225,7 +225,7 @@ export function app () {
       return;
     }
 
-    currentBet.numbers = getRandomNumbersBet(range, max_number)
+    currentBet.numbers = getRandomNumbersBet(range, maxNumber)
     fillGame(currentBet.numbers)
   }
 
@@ -239,8 +239,14 @@ export function app () {
   }
 
   function handleAddBetOnCart () {
-    if(currentBet.numbers.length < selectedGame['max-number']) {
-      return alert('Preecha todos os números do jogo!')
+    const currentNumbers = currentBet.numbers.length
+    const maxNumber = selectedGame['max-number']
+    if(currentNumbers < maxNumber) {
+      const remaining  = getRemainingNumbers(maxNumber, currentNumbers)
+      const msg = `Jogo incompleto!\nEscolha mais ${remaining === 1
+          ? `${remaining} número`
+          : `${remaining} números`}` + ' para completar.'
+      return alert(msg)
     }
 
     const { numbers } = currentBet
