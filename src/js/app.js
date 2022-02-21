@@ -183,7 +183,7 @@ export function app () {
       if(index === -1) {
         randomNumbers.push(!!random ? random : getRandomNumber(range))
       } else {
-        randomNumbers = randomNumbers.filter(item => item !== index)
+        randomNumbers = randomNumbers.filter(item => item !== randomNumbers[index])
       }
     }
 
@@ -195,14 +195,32 @@ export function app () {
     clearNumbersCurrentBet()
   }
 
+  function getRemainingNumbers (max, currentNumbers) {
+    return max - currentNumbers
+  }
+
+  function hasDuplicateNumberArrays (arrOne, arrTwo) {
+    return arrOne.some(number => arrTwo.indexOf(number) !== -1)
+  }
+
   function handleCompleteGame () {
     const { range } = selectedGame
     const max_number = selectedGame['max-number']
+    const amountNumbersSelected = currentBet.numbers.length
+    const currentNumbers = [...currentBet.numbers]
 
+    if(amountNumbersSelected === max_number) {
+      return alert(`Todos os ${max_number} números do jogo foram selecionados!`)
+    }
 
-    if(currentBet.numbers.length){
+    if(amountNumbersSelected < max_number){
       clearNumbersButton()
-      currentBet.numbers = getRandomNumbersBet(range, max_number)
+      const remainingNumbers = getRemainingNumbers(max_number, amountNumbersSelected)
+      const randomNumbers = getRandomNumbersBet(range, remainingNumbers)
+      if(hasDuplicateNumberArrays(currentNumbers, randomNumbers)) {
+        return handleCompleteGame()
+      }
+      currentBet.numbers = [...currentNumbers, ...randomNumbers]
       fillGame(currentBet.numbers)
       return;
     }
