@@ -49,11 +49,11 @@ export function app () {
   function init() {
     requestGames(response => {
       games = response
-      games.types = games.types.map(game => ({
+      games.types = games.types.map((game, index) => ({
         ...game,
-        selected: game.type === 'Mega-Sena'
+        selected: index === 0
       }))
-      selectedGame = games.types.find(game => game.selected)
+      selectedGame = games.types[0]
 
       console.log('Games: ', games)
       console.log('selectedGame: ', selectedGame)
