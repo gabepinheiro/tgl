@@ -1,20 +1,12 @@
 import { Element, Text } from '../utils/index.js'
 
-const modifiers = {
-  default: ['btn btn--sm', 'btn--border-md', 'btn--rounded'],
-  'Mega-Sena': 'btn__green',
-  'Lotofácil': 'btn__purple',
-  'Quina': 'btn__orange'
-}
-
-function createGameTypeButton ({type, selected}) {
+function createGameTypeButton ({type, selected, color}) {
   const $button = Element('button')
   const textNode = Text(type)
-  const cls = selected
-    ? modifiers['default'].concat(modifiers[type])
-    : modifiers['default'].concat(modifiers[type]+'--outline')
-  $button.setAttribute('class', cls.join(' '))
   $button.appendChild(textNode)
+  $button.style.backgroundColor = selected ? color : '#fff'
+  $button.style.color  = selected ? '#fff' : color
+  $button.setAttribute('class', `btn game-type-button`)
 
   return $button
 }

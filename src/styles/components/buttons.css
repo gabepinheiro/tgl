@@ -9,57 +9,19 @@
   font-size: 1.6rem;
   height: 5.2rem;
   padding: 1.7rem 2.5rem;
-}
-
-.btn--sm {
-  padding: 0.9rem 2.2rem;
-  height: 3.6rem;
-}
-
-.btn--md {
-  padding: 1.7rem 2.5rem;
-  height: 5.2rem;
-}
-
-.btn--rounded {
-  border-radius: 100px;
-}
-
-.btn--border-sm {
-  border: 1px solid currentColor;
-}
-
-.btn--border-md {
-  border: 2px solid currentColor;
-}
-
-
-.btn__green {
   background-color: var(--green-light);
-  color:  var(--white);
+  color: var(--white);
 }
 
-.btn__green--outline {
+.btn.--outline {
+  border: 1px solid var(--green-light);
   color: var(--green-light);
   background-color: var(--white);
 }
 
-.btn__purple {
-  background-color: var(--purple);
-  color:  var(--white);
-}
-
-.btn__purple--outline {
-  color: var(--purple);
-  background-color: var(--white);
-}
-
-.btn__orange {
-  background-color: var(--orange);
-  color:  var(--white);
-}
-
-.btn__orange--outline {
-  color: var(--orange);
-  background-color: var(--white);
+.game-type-button {
+  border-radius: 100px;
+  padding: 0.9rem 2.2rem;
+  height: 3.6rem;
+  border: 2px solid currentColor;
 }
