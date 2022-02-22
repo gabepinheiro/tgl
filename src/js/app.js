@@ -33,8 +33,8 @@ function requestGames (callback) {
 }
 
 function calculateTotalAmount (items) {
-  const total =  !!items
-    ? items.reduce((acc, current) => acc + current.price, 0)
+  const total = !!items
+    ? items.reduce((acc, current) => acc + current.game.price, 0)
     : 0
   cart.total= total
 
@@ -253,16 +253,21 @@ export function app () {
     }
 
     const { numbers } = currentBet
-    const { price, type } = selectedGame
+    const { type, price, color } = selectedGame
 
     const numbersAscendingOrder = numbers.map(Number).sort((a, b) => a - b)
 
     const bet = {
       id: crypto.randomUUID(),
       numbers: numbersAscendingOrder,
-      price,
-      type
+      game: {
+        type,
+        price,
+        color
+      }
     }
+
+    console.log(bet)
 
     if(!cart.items || cart.items.length === 0) $cartItemsContainer.innerHTML = ''
 

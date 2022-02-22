@@ -65,23 +65,10 @@
   margin-bottom: 0.6rem;
 }
 
-.cart__item-game-name--purple {
-  color: var(--purple);
-}
-
-.cart__item-game-name--green {
-  color: var(--green);
-}
-
-.cart__item-game-name--orange {
-  color: var(--orange);
-}
-
 .cart__item-game-value {
   color: var(--text);
   font-size: 1.6rem;
 }
-
 
 .cart__item-action-delete {
   border:0;
